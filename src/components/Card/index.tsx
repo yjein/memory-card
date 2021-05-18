@@ -1,59 +1,63 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CardStateType, Data } from "../../App";
-import { StyleCard, FrontCard, BackCard, Left, Right } from "./styled";
+import {
+  StyleCard,
+  FrontCard,
+  BackCard,
+  Left,
+  Right,
+  Triangle,
+} from "./styled";
+import back from "../../asset/img/back.png";
 
 interface Props {
   item: Data;
-  idx: number;
-  value: Data[];
-  gradeState: number;
-  setGradeState: React.Dispatch<React.SetStateAction<number>>;
   handleCard: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     wordState: CardStateType,
     setWordState: React.Dispatch<React.SetStateAction<CardStateType>>
   ) => void;
   handleGrade: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    idx: number
+    item: Data
   ) => void;
 }
 
 const Card: React.FC<Props> = (props) => {
-  const { item, idx, value, gradeState, setGradeState, handleCard, handleGrade } =
-    props;
+  const { item, handleCard, handleGrade } = props;
   const [wordState, setWordState] = useState<CardStateType>("front");
 
-  const a = () => {
-    return console.log("card useState");
-  };
-  const [b, sb] = useState(a);
-
-  useEffect(() => {
-    console.log("card mount");
-    // return console.log("card unmount");
-  }, []);
-
   return (
-    <StyleCard onClick={(e) => handleCard(e, wordState, setWordState)}>
-      <FrontCard wordState={wordState}>{item.ko}</FrontCard>
+    <StyleCard>
+      <FrontCard
+        onClick={() => handleCard( wordState, setWordState)}
+        wordState={wordState}
+      >
+        {item.ko}
+      </FrontCard>
+
       <BackCard wordState={wordState}>
         {item.en}
         <Left
           wordState={wordState}
           onClick={(e) => {
             setWordState("left");
-            handleGrade(e, idx);
+            handleCard( wordState, setWordState);
+            item.grade > 0 && item.grade--;
+            handleGrade(e, item);
           }}
         />
         <Right
           wordState={wordState}
           onClick={(e) => {
             setWordState("right");
-            handleGrade(e, idx);
+            handleCard( wordState, setWordState);
+            item.grade < 4 && item.grade++;
+            handleGrade(e, item);
           }}
         />
+        <Triangle onClick={() => handleCard( wordState, setWordState)} />
       </BackCard>
+      <img src={back} alt="카드모음"></img>
     </StyleCard>
   );
 };

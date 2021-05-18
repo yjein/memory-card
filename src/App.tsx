@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { data } from "./asset/data";
 import Box from "./components/Box";
 import Main from "./components/Main";
+
+const Wrap = styled.div`
+  height: 100%;
+`;
 
 const Header = styled.header`
   display: flex;
@@ -32,21 +36,12 @@ const initData: Data[] = data.map((item, id) => ({
   id: id,
 }));
 
-console.log("app 밖");
-
-
 const App = () => {
   const [value, setValue] = useState<Data[]>(initData);
   const [gradeState, setGradeState] = useState(1);
   const [btnGradeState, setBtnGradeState] = useState(gradeState);
 
-  const a = () => {
-    return console.log("app useState");
-  }
-  const [b, sb] = useState(a);
-
   const handleCard = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     wordState: CardStateType,
     setWordState: React.Dispatch<React.SetStateAction<CardStateType>>
   ) => {
@@ -54,47 +49,34 @@ const App = () => {
       case "front":
         setWordState("back");
         break;
-      case "back":
-        break;
-      case "left":
-        [1, 2, 3, 4, 5].map(() => setGradeState(gradeState - 1));
-        console.log(gradeState);
-        break;
-      case "right":
-        [1, 2, 3, 4, 5].map(() => setGradeState(gradeState + 1));
-        console.log(gradeState);
+      default:
+        setWordState("front");
         break;
     }
-    console.log(wordState);
   };
 
   const handleGrade = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    idx: number
+    item: Data
   ) => {
     e.stopPropagation();
-    const index = value.findIndex((item) => item.id === idx);
+    const index = value.findIndex((value) => value === item);
     setValue([
       ...value.slice(0, index),
       ...value.slice(index + 1),
-      ...value.slice(index, index + 1).map((item) => {
-        const result: Data = { ...item, grade: gradeState };
-        return result;
-      }),
+      ...value.slice(index, index + 1),
     ]);
-    console.log(gradeState, index, idx);
   };
 
-  useEffect(() => {
-    console.log("mount");
-    return console.log("unmount");
-  }, []);
-
   return (
-    <div>
+    <Wrap>
       <Header>
         <H1>Memory Card</H1>
-        <Box value={value} setBtnGradeState={setBtnGradeState} />
+        <Box
+          value={value}
+          btnGradeState={btnGradeState}
+          setBtnGradeState={setBtnGradeState}
+        />
       </Header>
       <Hr />
       <Main
@@ -105,7 +87,7 @@ const App = () => {
         handleCard={handleCard}
         handleGrade={handleGrade}
       />
-    </div>
+    </Wrap>
   );
 };
 

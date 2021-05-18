@@ -3,10 +3,9 @@ import { CardStateType } from "../../App";
 
 export const StyleCard = styled.div`
   position: relative;
-  margin: 0.75rem 0;
   padding: 0.5rem;
-  width: 24rem;
-  height: 10rem;
+  width: 36.75rem;
+  height: 25.5rem;
 `;
 
 export const FrontCard = styled.div<{
@@ -16,16 +15,18 @@ export const FrontCard = styled.div<{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24rem;
-  height: 10.5rem;
+  width: 100%;
+  height: 100%;
   border: 1px solid #333333;
-  border-radius: 1rem;
+  border-radius: 4.5rem;
+  font-size: 3rem;
   background: #ffffff;
   cursor: pointer;
   transform: perspective(500px)
     rotateY(${({ wordState }) => (wordState === "front" ? "0deg" : "180deg")});
   transition: transform 150ms linear, opacity 300ms;
   opacity: ${({ wordState }) => (wordState === "front" ? 1 : 0)};
+  z-index: ${({ wordState }) => (wordState === "front" ? 1 : -1)};
 `;
 
 export const BackCard = styled.div<{
@@ -35,11 +36,11 @@ export const BackCard = styled.div<{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24rem;
-  height: 10.5rem;
+  width: 100%;
+  height: 100%;
   border: 1px solid #333333;
-  border-radius: 1rem;
-  cursor: pointer;
+  border-radius: 4.5rem;
+  font-size: 3rem;
   transform: perspective(500px)
     rotateY(${({ wordState }) => (wordState !== "front" ? "0deg" : "-180deg")});
   transition: transform 150ms linear, opacity 300ms;
@@ -51,13 +52,14 @@ export const Left = styled.div<{ wordState: CardStateType }>`
   left: 0;
   width: 50%;
   height: 100%;
-  border-radius: 1rem 0 0 1rem;
+  border-radius: 4.5rem 0 0 4.5rem;
   background: linear-gradient(
     ${({ wordState }) =>
       wordState === "right"
         ? "to right, #b8ff89, #b8ff89"
         : "to right, #ff8989, #ff8989"}
   );
+  cursor: pointer;
   transition: all 200ms;
   z-index: -1;
 `;
@@ -67,12 +69,24 @@ export const Right = styled.div<{ wordState: CardStateType }>`
   right: 0;
   width: 50%;
   height: 100%;
-  border-radius: 0 1rem 1rem 0;
+  border-radius: 0 4.5rem 4.5rem 0;
   background: linear-gradient(
     ${({ wordState }) =>
       wordState !== "left"
         ? "to left, #b8ff89, #b8ff89"
         : "to left, #ff8989, #ff8989"}
   );
+  cursor: pointer;
   z-index: -1;
+`;
+
+export const Triangle = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0px;
+  height: 0px;
+  border-top: 5rem solid #414141;
+  border-right: 5rem solid transparent;
+  cursor: pointer;
 `;

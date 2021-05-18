@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { CardStateType, Data } from "../App";
 import Card from "./Card";
 
 const StyleMain = styled.main`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
 `;
 
 interface Props {
@@ -16,46 +16,27 @@ interface Props {
   setGradeState: React.Dispatch<React.SetStateAction<number>>;
   btnGradeState: number;
   handleCard: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     wordState: CardStateType,
     setWordState: React.Dispatch<React.SetStateAction<CardStateType>>
   ) => void;
-  handleGrade: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, idx: number) => void
+  handleGrade: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    item: Data
+  ) => void;
 }
 
 const Main: React.FC<Props> = (props) => {
-  const {
-    value,
-    gradeState,
-    btnGradeState,
-    setGradeState,
-    handleCard,
-    handleGrade,
-  } = props;
-
-  const a = () => {
-    return console.log("main useState");
-  }
-  const [b, sb] = useState(a);
-  
-  useEffect(()=>{
-    console.log("main mount");
-    return console.log("main unmount");
-  },[])
+  const { value, btnGradeState, handleCard, handleGrade } = props;
 
   return (
     <StyleMain>
       {value
         .filter((item) => item.grade === btnGradeState)
-        .slice(0, 16)
-        .map((item, idx) => (
+        .slice(0, 1)
+        .map((item) => (
           <Card
             item={item}
-            idx={idx}
-            key={idx}
-            value={value}
-            gradeState={gradeState}
-            setGradeState={setGradeState}
+            key={item.toString()}
             handleCard={handleCard}
             handleGrade={handleGrade}
           />
