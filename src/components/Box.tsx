@@ -7,10 +7,12 @@ const BoxWrap = styled.div`
   margin: auto 3rem auto 0;
 `;
 
-const StyleBox = styled.div`
+const StyleBox = styled.div<{ val: number; btnGradeState: number }>`
   width: 2rem;
   height: 2rem;
   border: solid 1px #000000;
+  background: ${({ val, btnGradeState }) =>
+    val === btnGradeState ? "#b8ff89" : "ffffff"};
   cursor: pointer;
 `;
 
@@ -26,16 +28,16 @@ interface Props {
 }
 
 const Box: React.FC<Props> = (props) => {
-  const { value, setBtnGradeState } = props;
+  const { value, btnGradeState, setBtnGradeState } = props;
 
   return (
     <BoxWrap>
       {[1, 2, 3, 4, 5].map((val) => (
         <Div key={val.toString()}>
           <StyleBox
-            onClick={() => {
-              setBtnGradeState(val);
-            }}
+            val={val}
+            btnGradeState={btnGradeState}
+            onClick={() => setBtnGradeState(val)}
           >
             {val}
           </StyleBox>
