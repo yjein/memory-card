@@ -21,7 +21,9 @@ const H1 = styled.h1`
 `;
 
 const Hr = styled.hr`
-  margin-bottom: 2rem;
+  width: 100%;
+  border: none;
+  border-top: 1px solid #333333;
 `;
 
 export type CardStateType = "front" | "back" | "left" | "right";
