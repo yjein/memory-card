@@ -5,6 +5,9 @@ import Box from "./components/Box";
 import Main from "./components/Main";
 
 const Wrap = styled.div`
+  display: grid;
+  grid-template-rows: 8.5rem 1.5rem minmax(22rem, 40rem);
+  align-items: center;
   height: 100%;
 `;
 
