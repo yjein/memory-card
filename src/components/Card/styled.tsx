@@ -7,6 +7,7 @@ export const StyleCard = styled.div`
   width: 36.75rem;
   height: 25.5rem;
   width: 70%;
+  min-width: 20rem;
   max-width: 36.75rem;
   height: 25.5rem;
 `;
