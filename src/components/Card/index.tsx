@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { CardStateType, Data } from "../../App";
 import { StyleCard, FrontCard, BackCard, Left, Right, Filp } from "./styled";
-import back from "../../asset/img/back.png";
 
 interface Props {
   item: Data;
