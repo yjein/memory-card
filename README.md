@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# 🗂️Memory Card?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+JSON 형식의 데이터를 추가하면 원하는 단어를 외울 수 있는 단어장입니다.
 
-## Available Scripts
+기본으로 제공되는 데이터는 한글 -> 영어 단어장입니다.
 
-In the project directory, you can run:
+## 💻개발환경
 
-### `yarn start`
+- `React`
+- `TypeScript`
+- `styled-components`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 사용법
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+프로그램을 실행했을 때 첫 화면입니다.
 
-### `yarn test`
+우측 상단에는 현재 단계와 외워야 할 카드의 개수가 표시되어 있습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+총 다섯 단계로 구성되며, 원하는 단계의 박스를 클릭하면 언제든지 이동이 가능합니다.
 
-### `yarn build`
+![introduce-1](/src/asset/img/introduce-1.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+카드의 좌측 부분(빨간 부분)을 클릭하면 카드는 사라집니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+추후 맨 뒤로 보내기 기능을 추가할 예정입니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+카드의 우측 부분(초록 부분)을 클릭하면 다음 단계로 넘어갑니다.
 
-### `yarn eject`
+현재 단어의 뜻을 더 보고 싶다면 카드의 우측 하단에 있는 뒤집기 버튼을 클릭하십시오.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![introduce-2](/src/asset/img/introduce-2.png)
