@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import { CardStateType, Data } from "../../App";
-import {
-  StyleCard,
-  FrontCard,
-  BackCard,
-  Left,
-  Right,
-  Triangle,
-} from "./styled";
+import { StyleCard, FrontCard, BackCard, Left, Right, Filp } from "./styled";
 import back from "../../asset/img/back.png";
 
 interface Props {
@@ -29,7 +22,7 @@ const Card: React.FC<Props> = (props) => {
   return (
     <StyleCard>
       <FrontCard
-        onClick={() => handleCard( wordState, setWordState)}
+        onClick={() => handleCard(wordState, setWordState)}
         wordState={wordState}
       >
         {item.ko}
@@ -41,7 +34,7 @@ const Card: React.FC<Props> = (props) => {
           wordState={wordState}
           onClick={(e) => {
             setWordState("left");
-            handleCard( wordState, setWordState);
+            handleCard(wordState, setWordState);
             item.grade > 0 && item.grade--;
             handleGrade(e, item);
           }}
@@ -50,14 +43,13 @@ const Card: React.FC<Props> = (props) => {
           wordState={wordState}
           onClick={(e) => {
             setWordState("right");
-            handleCard( wordState, setWordState);
+            handleCard(wordState, setWordState);
             item.grade < 4 && item.grade++;
             handleGrade(e, item);
           }}
         />
-        <Triangle onClick={() => handleCard( wordState, setWordState)} />
+        <Filp onClick={() => handleCard(wordState, setWordState)} />
       </BackCard>
-      <img src={back} alt="카드모음"></img>
     </StyleCard>
   );
 };

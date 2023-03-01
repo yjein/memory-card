@@ -80,13 +80,14 @@ export const Right = styled.div<{ wordState: CardStateType }>`
   z-index: -1;
 `;
 
-export const Triangle = styled.div`
+export const Filp = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 0px;
-  height: 0px;
-  border-top: 5rem solid #414141;
-  border-right: 5rem solid transparent;
+  width: 4rem;
+  height: 4rem;
+  background-color: #ffffffbd;
+  border: 2px dashed #3232329b;
+  border-radius: 0 0 4.5rem 0;
   cursor: pointer;
 `;
