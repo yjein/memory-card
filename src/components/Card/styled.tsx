@@ -6,6 +6,9 @@ export const StyleCard = styled.div`
   padding: 0.5rem;
   width: 36.75rem;
   height: 25.5rem;
+  width: 70%;
+  max-width: 36.75rem;
+  height: 25.5rem;
 `;
 
 export const FrontCard = styled.div<{
@@ -21,7 +24,9 @@ export const FrontCard = styled.div<{
   border-radius: 4.5rem;
   font-size: 3rem;
   background: #ffffff;
+  box-shadow: 0 0 3.5rem -2.75rem #000000;
   cursor: pointer;
+
   transform: perspective(500px)
     rotateY(${({ wordState }) => (wordState === "front" ? "0deg" : "180deg")});
   transition: transform 150ms linear, opacity 300ms;
@@ -41,6 +46,8 @@ export const BackCard = styled.div<{
   border: 1px solid #333333;
   border-radius: 4.5rem;
   font-size: 3rem;
+  box-shadow: 0 0 3.5rem -2.75rem #000000;
+
   transform: perspective(500px)
     rotateY(${({ wordState }) => (wordState !== "front" ? "0deg" : "-180deg")});
   transition: transform 150ms linear, opacity 300ms;
